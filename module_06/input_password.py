@@ -9,14 +9,17 @@ import getpass
 def input_and_check_password():
     password: str = getpass.getpass()
     if not password:
+        print('Пароль не может быть пустым!')
         return False
     try:
         hasher = hashlib.md5()
         hasher.update(password.encode('latin-1'))
         if hasher.hexdigest() == "d8578edf8458ce06fbc5bb76a58c5ca4":
+            print('Пароль введен правильно!')
             return True
     except ValueError:
         pass
+    print('Пароль введен неверно!')
     return False
 
 
